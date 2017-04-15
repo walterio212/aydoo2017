@@ -10,7 +10,7 @@ public class Libreria {
 		ventas = new ArrayList<Venta>();
 	}
 	
-	public void RealizarVenta(Cliente cliente, Mes mes, Producto producto, int cantidad){
+	public void realizarVenta(Cliente cliente, Mes mes, Producto producto, int cantidad){
 		Venta venta = new Venta(cliente, producto, mes, cantidad);
 		ventas.add(venta);
 	}

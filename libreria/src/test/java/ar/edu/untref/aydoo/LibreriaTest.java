@@ -27,9 +27,9 @@ public class LibreriaTest {
 		
 		Libreria libreria = new Libreria();
 		
-		libreria.RealizarVenta(cliente, Mes.Agosto, this.elHobbit, 1);
-		libreria.RealizarVenta(cliente, Mes.Agosto, this.lapicera, 2);
-		libreria.RealizarVenta(cliente, Mes.Agosto, this.elGraficoIndividual, 1);
+		libreria.realizarVenta(cliente, Mes.Agosto, this.elHobbit, 1);
+		libreria.realizarVenta(cliente, Mes.Agosto, this.lapicera, 2);
+		libreria.realizarVenta(cliente, Mes.Agosto, this.elGraficoIndividual, 1);
 		
 		double precioAgosto = libreria.calcularMontoACobrar(cliente, Mes.Agosto);
 		
@@ -42,8 +42,8 @@ public class LibreriaTest {
 		
 		Libreria libreria = new Libreria();
 		
-		libreria.RealizarVenta(cliente, Mes.Enero, this.barcelonaSuscripcionAnual, 1);
-		libreria.RealizarVenta(cliente, Mes.Enero, this.pagina12, 1);
+		libreria.realizarVenta(cliente, Mes.Enero, this.barcelonaSuscripcionAnual, 1);
+		libreria.realizarVenta(cliente, Mes.Enero, this.pagina12, 1);
 		
 		double precioEnero = libreria.calcularMontoACobrar(cliente, Mes.Enero);
 		
