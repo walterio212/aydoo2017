@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Tipo de Objeto: Entity
 public class Cliente {
 	
 	private String nombre;
