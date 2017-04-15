@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Tipo de Objeto: Value Object
 public class Venta {
 
 	private Cliente cliente;

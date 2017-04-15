@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Tipo de Objeto Entity
 public class Suscripcion extends Producto {
 
 	private int periodicidad;

@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+// Tipo de objeto: Entity
 public class Revista extends Suscripcion {
 
 	private boolean esEjemplarIndividual;

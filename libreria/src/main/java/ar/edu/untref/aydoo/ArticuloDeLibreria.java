@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Tipo de Objeto: Entity
 public class ArticuloDeLibreria extends Producto {
 
 	public ArticuloDeLibreria(String nombre, double precio) {

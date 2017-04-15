@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Tipo de objeto: Entity
 public abstract class Producto {
 
 	public String nombre;

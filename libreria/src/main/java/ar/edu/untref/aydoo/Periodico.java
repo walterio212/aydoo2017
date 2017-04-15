@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+//Entity
 public class Periodico extends Suscripcion {
 
 	private boolean esEjemplarIndividual;

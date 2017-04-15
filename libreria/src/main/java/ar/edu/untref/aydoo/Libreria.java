@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
 
+//Tipo de Objeto: Service
 public class Libreria {
 
 	private ArrayList<Venta> ventas;
