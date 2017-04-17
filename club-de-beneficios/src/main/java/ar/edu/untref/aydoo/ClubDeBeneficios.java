@@ -26,4 +26,18 @@ public class ClubDeBeneficios {
 		return actual;
 	}
 
+	public Sucursal obtenerSucursalConMasBeneficiosOtorgados() {
+		Sucursal actual = null;
+
+		for (int i = 0; i < establecimientos.size(); i++){
+			Establecimiento establecimientoActual = establecimientos.get(i);
+
+			if(actual == null || actual.obtenerVentas().size() < establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados().obtenerVentas().size()){
+				actual = establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados();
+			}
+		}
+
+		return actual;
+	}
+
 }
