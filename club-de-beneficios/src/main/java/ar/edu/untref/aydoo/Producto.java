@@ -2,8 +2,19 @@ package ar.edu.untref.aydoo;
 
 public class Producto {
 
-	public Producto(String string, int i) {
-		// TODO Auto-generated constructor stub
+	private double precio;
+	private String nombre;
+	
+	public Producto(String nombre, double precio) {
+		this.precio = precio;
+		this.nombre = nombre;
 	}
 
+	public double obtenerPrecio() {
+		return this.precio;
+	}
+
+	public String obtenerNombre() {
+		return this.nombre;
+	}
 }

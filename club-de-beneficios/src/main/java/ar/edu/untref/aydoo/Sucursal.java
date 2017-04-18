@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Sucursal {
 
-    private String nombre;
+	private String nombre;
+    private Establecimiento establecimiento;
     private List<Venta> ventas;
 
 	public Sucursal(String nombre) {
@@ -15,8 +16,8 @@ public class Sucursal {
 		ventas = new ArrayList<Venta>();
 	}
 
-	public void vender(Cliente clienteA, ArrayList<Producto> productosClienteA, LocalDate fechaDeVenta) {
-		Venta venta = new Venta(fechaDeVenta);
+	public void vender(Cliente cliente, ArrayList<Producto> productos, LocalDate fechaDeVenta) {
+		Venta venta = new Venta(fechaDeVenta, cliente, productos, this.establecimiento);
 		this.ventas.add(venta);
 	}
 
@@ -31,6 +32,14 @@ public class Sucursal {
 		}
 
 		return ventasDelMes;
+	}
+
+	public void asignarEstablecimiento(Establecimiento establecimiento){
+		this.establecimiento = establecimiento;
+	}
+
+	public Establecimiento obtenerEstablecimiento(){
+		return this.establecimiento;
 	}
 
 	public Object obtenerNombre() {

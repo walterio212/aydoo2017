@@ -1,16 +1,20 @@
 package ar.edu.untref.aydoo;
 
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Establecimiento {
 
 	private String nombre;
 	private List<Sucursal> sucursales;
+	private List<Beneficio> beneficios;
 
-	public Establecimiento(String nombre, List<Sucursal> sucursalesEstablecimientoAzul, List<Beneficio> beneficiosPorcentajesAltos) {
+	public Establecimiento(String nombre, List<Sucursal> sucursalesEstablecimiento, List<Beneficio> beneficios) {
 		this.nombre = nombre;
-		this.sucursales = sucursalesEstablecimientoAzul;
+		this.beneficios = beneficios;
+		this.sucursales = sucursalesEstablecimiento;
+		this.asignarEstablecimientoASucursales(this.sucursales);
 	}
 
 	public String obtenerNombre() {
@@ -37,5 +41,26 @@ public class Establecimiento {
 		}
 
 		return total;
+	}
+	
+	public List<Venta> obtenerVentas(Month month) {
+		List<Venta> ventas = new ArrayList<Venta>();
+
+		for (int i = 0; i < sucursales.size(); i++) {
+			ventas.addAll(sucursales.get(i).obtenerVentas(month));
+		}
+
+		return ventas;
+	}
+	
+	private void asignarEstablecimientoASucursales(List<Sucursal> sucursalesEstablecimiento){
+		for (int i = 0; i < sucursalesEstablecimiento.size(); i++) {
+			Sucursal actual = sucursalesEstablecimiento.get(i);
+			actual.asignarEstablecimiento(this);
+		}
+	}
+
+	public List<Beneficio> obtenerBeneficios() {
+		return this.beneficios;
 	}
 }

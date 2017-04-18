@@ -24,4 +24,8 @@ public class Cliente {
 	public Tarjeta obtenerTarjeta() {
 		return this.tarjeta;
 	}
+	
+	public void asignarTarjeta(Tarjeta tarjeta){
+		this.tarjeta = tarjeta;
+	}
 }
