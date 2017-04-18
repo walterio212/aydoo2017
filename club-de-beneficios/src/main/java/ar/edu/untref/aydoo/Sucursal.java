@@ -1,25 +1,36 @@
 package ar.edu.untref.aydoo;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sucursal {
 
-	private String nombre;
-	private List<Venta> ventas;
-	
+    private String nombre;
+    private List<Venta> ventas;
+
 	public Sucursal(String nombre) {
 		this.nombre = nombre;
 		ventas = new ArrayList<Venta>();
 	}
 
-	public void vender(Cliente clienteA, ArrayList<Producto> productosClienteA) {
-		Venta venta = new Venta();
+	public void vender(Cliente clienteA, ArrayList<Producto> productosClienteA, LocalDate fechaDeVenta) {
+		Venta venta = new Venta(fechaDeVenta);
 		this.ventas.add(venta);
 	}
 
-	public List<Venta> obtenerVentas() {
-		return this.ventas;
+	public List<Venta> obtenerVentas(Month month) {
+		List<Venta> ventasDelMes = new ArrayList<Venta>();
+
+		for (int i = 0; i < this.ventas.size(); i++) {
+			Venta actual = this.ventas.get(i);
+			if (actual.obtenerFechaDeVenta().getMonth() == month) {
+				ventasDelMes.add(actual);
+			}
+		}
+
+		return ventasDelMes;
 	}
 
 	public Object obtenerNombre() {

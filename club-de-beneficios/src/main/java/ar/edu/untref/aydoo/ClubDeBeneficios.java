@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.time.Month;
 import java.util.List;
 
 public class ClubDeBeneficios {
@@ -14,11 +15,11 @@ public class ClubDeBeneficios {
 		// TODO Auto-generated method stub
 	}
 
-	public Establecimiento obtenerEstablecimientoConMasBeneficiosOtorgados() {
+	public Establecimiento obtenerEstablecimientoConMasBeneficiosOtorgados(Month month) {
 		Establecimiento actual = null;
 
-		for (int i = 0; i < establecimientos.size(); i++){
-			if(actual == null || actual.obtenerTotalBeneficiosOtorgados() < establecimientos.get(i).obtenerTotalBeneficiosOtorgados()){
+		for (int i = 0; i < establecimientos.size(); i++) {
+			if (actual == null || actual.obtenerTotalBeneficiosOtorgados(month) < establecimientos.get(i).obtenerTotalBeneficiosOtorgados(month)) {
 				actual = establecimientos.get(i);
 			}
 		}
@@ -26,14 +27,14 @@ public class ClubDeBeneficios {
 		return actual;
 	}
 
-	public Sucursal obtenerSucursalConMasBeneficiosOtorgados() {
+	public Sucursal obtenerSucursalConMasBeneficiosOtorgados(Month month) {
 		Sucursal actual = null;
 
-		for (int i = 0; i < establecimientos.size(); i++){
+		for (int i = 0; i < establecimientos.size(); i++) {
 			Establecimiento establecimientoActual = establecimientos.get(i);
 
-			if(actual == null || actual.obtenerVentas().size() < establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados().obtenerVentas().size()){
-				actual = establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados();
+			if (actual == null || actual.obtenerVentas(month).size() < establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados(month).obtenerVentas(month).size()) {
+				actual = establecimientoActual.obtenerSucursalConMasBeneficiosOtorgados(month);
 			}
 		}
 

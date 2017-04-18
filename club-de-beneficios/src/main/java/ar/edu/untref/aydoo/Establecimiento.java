@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.time.Month;
 import java.util.List;
 
 public class Establecimiento {
@@ -16,11 +17,11 @@ public class Establecimiento {
 		return this.nombre;
 	}
 
-	public Sucursal obtenerSucursalConMasBeneficiosOtorgados(){
+	public Sucursal obtenerSucursalConMasBeneficiosOtorgados(Month month) {
 		Sucursal actual = null;
 
-		for(int i = 0; i < sucursales.size(); i++){
-			if(actual == null || actual.obtenerVentas().size() < sucursales.get(i).obtenerVentas().size()){
+		for (int i = 0; i < sucursales.size(); i++) {
+			if (actual == null || actual.obtenerVentas(month).size() < sucursales.get(i).obtenerVentas(month).size()) {
 				actual = sucursales.get(i);
 			}
 		}
@@ -28,11 +29,11 @@ public class Establecimiento {
 		return actual;
 	}
 
-	public int obtenerTotalBeneficiosOtorgados() {
+	public int obtenerTotalBeneficiosOtorgados(Month month) {
 		int total = 0;
 
 		for (int i = 0; i < sucursales.size(); i++) {
-			total += sucursales.get(i).obtenerVentas().size();
+			total += sucursales.get(i).obtenerVentas(month).size();
 		}
 
 		return total;

@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.Assert;
@@ -62,11 +64,13 @@ public class IntegracionTest {
 		club.otorgarTarjeta(clienteA, TipoDeTarjeta.CLASSIC);
 		club.otorgarTarjeta(clienteB, TipoDeTarjeta.PREMIUM);
 		
-		sucursalRojaA.vender(clienteA, productosClienteA);
-		sucursalRojaA.vender(clienteB, productosClienteB);
-		sucursalAzulA.vender(clienteB, productosClienteB);
+		sucursalRojaA.vender(clienteA, productosClienteA, LocalDate.of(2017, 2, 1));
+		sucursalRojaA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
 		
-		Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoConMasBeneficiosOtorgados();
+		Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoConMasBeneficiosOtorgados(Month.FEBRUARY);
 		
 		Assert.assertEquals("EstablecimientoRojo", establecimientoConMasBeneficios.obtenerNombre());
 	}
@@ -126,11 +130,13 @@ public class IntegracionTest {
 		club.otorgarTarjeta(clienteA, TipoDeTarjeta.CLASSIC);
 		club.otorgarTarjeta(clienteB, TipoDeTarjeta.PREMIUM);
 		
-		sucursalRojaA.vender(clienteA, productosClienteA);
-		sucursalRojaA.vender(clienteB, productosClienteB);
-		sucursalAzulA.vender(clienteB, productosClienteB);
+		sucursalRojaA.vender(clienteA, productosClienteA, LocalDate.of(2017, 2, 1));
+		sucursalRojaA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
 		
-		Sucursal  sucursalConMasBeneficios = club.obtenerSucursalConMasBeneficiosOtorgados();
+		Sucursal sucursalConMasBeneficios = club.obtenerSucursalConMasBeneficiosOtorgados(Month.FEBRUARY);
 		
 		Assert.assertEquals("SRA", sucursalConMasBeneficios.obtenerNombre());
 	}

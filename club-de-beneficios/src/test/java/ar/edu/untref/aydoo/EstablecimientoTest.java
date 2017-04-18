@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -39,9 +41,11 @@ public class EstablecimientoTest {
 		ArrayList<Producto> productosClienteB = new ArrayList<Producto>();
 		productosClienteB.add(productoA);
 				
-		sucursalAzulA.vender(clienteB, productosClienteB);
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulB.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
+		sucursalAzulB.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
 		
-		Sucursal sucursalConMasBeneficios = establecimientoAzul.obtenerSucursalConMasBeneficiosOtorgados();
+		Sucursal sucursalConMasBeneficios = establecimientoAzul.obtenerSucursalConMasBeneficiosOtorgados(Month.FEBRUARY);
 		
 		Assert.assertEquals("SAA", sucursalConMasBeneficios.obtenerNombre());
 	}
@@ -72,10 +76,11 @@ public class EstablecimientoTest {
 		ArrayList<Producto> productosClienteB = new ArrayList<Producto>();
 		productosClienteB.add(productoA);
 				
-		sucursalAzulA.vender(clienteB, productosClienteB);
-		sucursalAzulB.vender(clienteB, productosClienteB);
+		sucursalAzulA.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulB.vender(clienteB, productosClienteB, LocalDate.of(2017, 2, 1));
+		sucursalAzulB.vender(clienteB, productosClienteB, LocalDate.of(2017, 3, 1));
 		
-		int totalBeneficiosOtorgados = establecimientoAzul.obtenerTotalBeneficiosOtorgados();
+		int totalBeneficiosOtorgados = establecimientoAzul.obtenerTotalBeneficiosOtorgados(Month.FEBRUARY);
 		
 		Assert.assertEquals(2, totalBeneficiosOtorgados);
 	}

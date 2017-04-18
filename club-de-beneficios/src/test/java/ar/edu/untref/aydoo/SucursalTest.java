@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.*;
 
 import org.junit.Assert;
@@ -19,9 +21,9 @@ public class SucursalTest {
 		productosClienteA.add(productoB);
 		
 		Sucursal sucursalRojaA = new Sucursal("SRA");
-		sucursalRojaA.vender(clienteA, productosClienteA);
+		sucursalRojaA.vender(clienteA, productosClienteA, LocalDate.of(2017, 2, 1));
 		
-		List<Venta> ventasRealizadas = sucursalRojaA.obtenerVentas();
+		List<Venta> ventasRealizadas = sucursalRojaA.obtenerVentas(Month.FEBRUARY);
 		
 		Assert.assertEquals(1, ventasRealizadas.size());
 	}

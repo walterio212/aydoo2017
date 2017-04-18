@@ -21,7 +21,7 @@ public class Cliente {
 		return this.nombre;
 	}
 	
-	public Tarjeta obtenerTarjeta(){
+	public Tarjeta obtenerTarjeta() {
 		return this.tarjeta;
 	}
 }

@@ -1,5 +1,15 @@
 package ar.edu.untref.aydoo;
 
-public class Venta {
+import java.time.LocalDate;
 
+public class Venta {
+	private LocalDate fechaDeVenta;
+
+	public Venta(LocalDate fechaVenta) {
+		this.fechaDeVenta = fechaVenta;
+	}
+
+	public LocalDate obtenerFechaDeVenta() {
+		return this.fechaDeVenta;
+	}
 }
