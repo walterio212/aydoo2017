@@ -18,4 +18,24 @@ public class ReporteDeAhorros {
 	public Cliente obtenerCliente(){
 		return this.cliente;
 	}
+	
+	public double obtenerCostoTotalSinDescuento(){
+		double total = 0;
+		for (int i = 0; i < ventas.size(); i++){
+			double totalProductos = ventas.get(i).obtenerCostoTotalSinDescuento();
+			total += totalProductos;
+		}
+		
+		return total;
+	}
+	
+	public double obtenerCostoTotalConDescuento(){
+		double total = 0;
+		for (int i = 0; i < ventas.size(); i++){
+			double totalProductos = ventas.get(i).obtenerCostoTotalConDescuento();
+			total += totalProductos;
+		}
+
+		return total;
+	}
 }

@@ -21,6 +21,42 @@ public class Venta {
 	public LocalDate obtenerFechaDeVenta() {
 		return this.fechaDeVenta;
 	}
+	
+	public Cliente obtenerCliente() {
+		return this.cliente;
+	}
+	
+	public List<ProductoVendido> obtenerProductosVendidos(){
+		return this.productosVendidos;
+	}
+	
+	public Beneficio obtenerBeneficioAplicado(){
+		return this.beneficioAplicado;
+	}
+	
+	public Establecimiento obtenerEstablecimiento(){
+		return this.establecimiento;
+	}
+	
+	public double obtenerCostoTotalSinDescuento(){
+		double total = 0;
+		for (int i = 0; i < this.productosVendidos.size(); i++){
+			double precioProducto = this.productosVendidos.get(i).obtenerProducto().obtenerPrecio();
+			total += precioProducto;
+		}
+		
+		return total;
+	}
+	
+	public double obtenerCostoTotalConDescuento(){
+		double total = 0;
+		for (int i = 0; i < this.productosVendidos.size(); i++){
+			double precioProducto = this.productosVendidos.get(i).obtenerPrecioVendido();
+			total += precioProducto;
+		}
+		
+		return total;
+	}
 
 	private void agregarProductosVendidos(List<Producto> productos, List<Beneficio> beneficios) {
 		Tarjeta tarjeta = this.cliente.obtenerTarjeta();
@@ -58,7 +94,4 @@ public class Venta {
 		return productosResult;
 	}
 
-	public Cliente obtenerCliente() {
-		return this.cliente;
-	}
 }
