@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ObtenedorDeParametros {
+	
+	private ValidadorDeParametros validador;
+	
+	public ObtenedorDeParametros() {
+		this.validador = new ValidadorDeParametros();
+	}
 
 	public Map<String, String> obtener(String[] args) {
 		Map<String, String> result = new HashMap<String, String>();
@@ -16,17 +22,20 @@ public class ObtenedorDeParametros {
 	}
 
 	private String obtenerNumero(String[] args) {
-		return args[0];
+		String numero = args[0];
+		validador.validarNumero(numero);
+		return numero;
 	}
 
 	private String obtenerFormat(String[] args) {
-		String format = null;
+		String format = "";
 		String formatParam = "--format=";
 
 		for (int i = 1; i < args.length; i++) {
 			String param = args[i];
 			if (param.startsWith(formatParam)){
 				format = param.substring(formatParam.length(), param.length());
+				validador.validarParametroFormat(format);
 			}
 		}
 
@@ -34,13 +43,14 @@ public class ObtenedorDeParametros {
 	}
 
 	private String obtenerOuputFile(String[] args) {
-		String outputFile = null;
+		String outputFile = "";
 		String formatParam = "--output-file=";
 
 		for (int i = 1; i < args.length; i++) {
 			String param = args[i];
 			if (param.startsWith(formatParam)){
 				outputFile = param.substring(formatParam.length(), param.length());
+				validador.validarParametroOutputFile(outputFile);
 			}
 		}
 
@@ -48,13 +58,14 @@ public class ObtenedorDeParametros {
 	}
 
 	private String obtenerSort(String[] args) {
-		String sort = null;
+		String sort = "";
 		String formatParam = "--sort=";
 
 		for (int i = 1; i < args.length; i++) {
 			String param = args[i];
 			if (param.startsWith(formatParam)){
 				sort = param.substring(formatParam.length(), param.length());
+				validador.validarParametroSort(sort);
 			}
 		}
 

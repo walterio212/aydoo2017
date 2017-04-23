@@ -13,28 +13,17 @@ public class ValidadorDeParametrosTest {
 	}
 	
 	@Test
-	public void ValidarArrayVacioDeberiaLanzarError(){
-		String [] array = new String[0];
-		
-		try{
-			validador.validarYDevolverFormateado(array);
-			Assert.fail("Ocurrio un error");
-		}catch(IllegalArgumentException e){
-			String mensaje = e.getMessage();
-			
-			Assert.assertEquals("No se encontraron parametros", mensaje);
-		}
+	public void validarNumeroPasandoStringConNumeroMayorA0NoLanzaError(){
+		validador.validarNumero("12");
 	}
 	
 	@Test
-	public void ValidarArrayPrimerParametroNoNumericoDeberiaLanzarError(){
-		String [] array = new String[1];
-		array[0] = "asd";
+	public void validarNumeroPasandoStringQueNoesNumeroMayorA0LanzaError(){
 		
-		try{
-			validador.validarYDevolverFormateado(array);
-			Assert.fail("Ocurrio un error");
-		}catch(IllegalArgumentException e){
+		try {
+			validador.validarNumero("asd");
+		}
+		catch(IllegalArgumentException e){
 			String mensaje = e.getMessage();
 			
 			Assert.assertEquals("El primer parametro enviado no es un número natural", mensaje);
@@ -42,38 +31,24 @@ public class ValidadorDeParametrosTest {
 	}
 	
 	@Test
-	public void ValidarArrayPrimerParametroNumericoDeberiaDevolver2Parametros(){
-		String [] array = new String[1];
-		array[0] = "12";
+	public void ValidarArrayVacioDeberiaLanzarError(){
+		String [] array = new String[0];
 		
-		String[] resultado = validador.validarYDevolverFormateado(array);
-		
-		Assert.assertEquals(2, resultado.length);
-		Assert.assertEquals("12", resultado[0]);
-		Assert.assertEquals("", resultado[1]);
-	}
-	
-	@Test
-	public void ValidarArrayPrimerParametroNumericoSegundoParametroConEntradaMalArmadaDeberiaLanzarError(){
-		String [] array = new String[2];
-		array[0] = "12";
-		array[1] = "-format=12";
 		try{
-			validador.validarYDevolverFormateado(array);
-			Assert.fail("Ocrrio un error");
+			validador.validarParametrosNoVacio(array);
+			Assert.fail("Ocurrio un error");
 		}catch(IllegalArgumentException e){
 			String mensaje = e.getMessage();
-			Assert.assertEquals("La entrada del parametro format es invalida. Deberia ser --format=", mensaje);
-		}		
+			
+			Assert.assertEquals("No se encontraron parametros", mensaje);
+		}
 	}
-	
+
 	@Test
-	public void ValidarArrayPrimerParametroNumericoSegundoParametroNoValidoLanzarError(){
-		String [] array = new String[2];
-		array[0] = "12";
-		array[1] = "--format=yerba";
+	public void ValidarParametroFormatNoValidoDeberiaLanzarError(){
+		
 		try{
-			validador.validarYDevolverFormateado(array);
+			validador.validarParametroFormat("yerba");
 			Assert.fail("Ocrrio un error");
 		}catch(IllegalArgumentException e){
 			String mensaje = e.getMessage();
@@ -82,26 +57,46 @@ public class ValidadorDeParametrosTest {
 	}
 	
 	@Test
-	public void ValidarPrimerParametroNumericoSegundoParametroRecortadoCorrectoDeberiaDevolverLos2Parametros(){
-		String [] array = new String[2];
-		array[0] = "12";
-		array[1] = "--format=pretty";
-		
-		String[] resultado = validador.validarYDevolverFormateado(array);
-		Assert.assertEquals(2, resultado.length);
-		Assert.assertEquals("12", resultado[0]);
-		Assert.assertEquals("pretty", resultado[1]);
+	public void validarParametroFormatOk(){
+		validador.validarParametroFormat("pretty");		
 	}
 	
 	@Test
-	public void ValidarPrimerParametroNumericoSegundoParametroRecortadoNoCaseSensitiveCorrectoDeberiaDevolverLos2Parametros(){
-		String [] array = new String[2];
-		array[0] = "12";
-		array[1] = "--format=pREtTy";
+	public void ValidarFormatoNoCaseSensitiveCorrecto(){
+		validador.validarParametroFormat("pREtTy");		
+	}
+	
+	@Test
+	public void ValidarParametroAscCorrecto(){
+		validador.validarParametroSort("asc");		
+	}
+	
+	@Test
+	public void ValidarParametroSortNoValidoDeberiaLanzarError(){
 		
-		String[] resultado = validador.validarYDevolverFormateado(array);
-		Assert.assertEquals(2, resultado.length);
-		Assert.assertEquals("12", resultado[0]);
-		Assert.assertEquals("pretty", resultado[1]);
+		try{
+			validador.validarParametroSort("asddd");
+			Assert.fail("Ocrrio un error");
+		}catch(IllegalArgumentException e){
+			String mensaje = e.getMessage();
+			Assert.assertEquals("Formato no aceptado. Las opciones posibles son: asc o des.", mensaje);
+		}		
+	}
+	
+	@Test
+	public void ValidarParametroOutputFileOk(){
+		validador.validarParametroOutputFile("salida.txt");		
+	}
+	
+	@Test
+	public void ValidarParametroOutputFileNoValidoDeberiaLanzarError(){
+		
+		try{
+			validador.validarParametroOutputFile("asddd");
+			Assert.fail("Ocrrio un error");
+		}catch(IllegalArgumentException e){
+			String mensaje = e.getMessage();
+			Assert.assertEquals("Formato no aceptado. El archivo especificado deberia ser .txt", mensaje);
+		}		
 	}
 }

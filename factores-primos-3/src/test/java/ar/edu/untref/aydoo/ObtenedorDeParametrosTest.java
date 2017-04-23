@@ -26,7 +26,7 @@ public class ObtenedorDeParametrosTest {
 	}
 	
 	@Test
-	public void ObtnerParametrosSinOutPutFileDevuelveElRestoYdevuelveParamOutputFileEnNull(){
+	public void ObtnerParametrosSinOutPutFileDevuelveElRestoYdevuelveParamOutputFileVacio(){
 		String[] args = new String[3];
 		args[0] = "120";
 		args[1] = "--format=pretty";
@@ -39,6 +39,6 @@ public class ObtenedorDeParametrosTest {
 		Assert.assertEquals("120", result.get("Numero"));
 		Assert.assertEquals("pretty", result.get("Format"));
 		Assert.assertEquals("asc", result.get("Sort"));
-		Assert.assertNull(result.get("OutputFile"));
+		Assert.assertEquals("", result.get("OutputFile"));
 	}	
 }

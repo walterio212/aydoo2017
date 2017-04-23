@@ -1,18 +1,19 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Map;
+
 public class Programa
 {
     public static final void main(String arg[]) {
-        ValidadorDeParametros validador = new ValidadorDeParametros();
-    	Impresora impresora = new Impresora();
-    	ConstructorDeTexto constructorTxt = new ConstructorDeTexto();
+    	ObtenedorDeParametros obtenedorDeParametros = new ObtenedorDeParametros();
+        ConstructorDeTexto constructorTxt = new ConstructorDeTexto();
     	CreadorDeArchivo creador = new CreadorDeArchivo();
-    	String[] parametros;
+    	Map<String, String> parametros;
 
     	try {
-    		parametros = validador.validarYDevolverFormateado(arg);
+    		parametros = obtenedorDeParametros.obtener(arg);
 
-    		int numeroIngresado = Integer.parseInt(parametros[0]);
+    		int numeroIngresado = Integer.parseInt(parametros.get("Numero"));
 
     		CalculadorFactoresPrimos calculador = new CalculadorFactoresPrimos();
     		int[] factoresPrimos = calculador
@@ -21,11 +22,12 @@ public class Programa
     		System.out
     		.print("Factores Primos de " + numeroIngresado + ": ");
 
-    		String texto = constructorTxt.construir(factoresPrimos, parametros[1], "asc");
+    		String texto = constructorTxt.construir(factoresPrimos, parametros.get("Format"), parametros.get("Sort"));
 
     		System.out.print(texto);
-
-    		creador.crearArchivo(texto, "salida.txt");
+    		if (!parametros.get("Format").equals("")) {
+    			creador.crearArchivo(texto, parametros.get("Format"));    			
+    		}
 
     	}
     	catch (IllegalArgumentException e) {

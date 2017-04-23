@@ -2,37 +2,14 @@ package ar.edu.untref.aydoo;
 
 public class ValidadorDeParametros {
 
-	public String[] validarYDevolverFormateado(String[] args) {
-
-		String[] resultado = new String[2];
-
-		validar(args);
-
-		resultado[0] = args[0];
-		resultado[1] = "";
-
-		if (args.length >= 2) {
-			String formato = obtenerFormato(args[1]);
-			resultado[1] = formato.toLowerCase();
-		}
-
-		return resultado;
-	}
-
-	private void validar(String[] args) {
+	public void validarParametrosNoVacio(String[] args) {
 
 		if (args.length == 0) {
 			throw new IllegalArgumentException("No se encontraron parametros");
 		}
-
-		validarNumero(args[0]);
-
-		if (args.length >= 2) { 
-			validarParametroFormat(args[1]);
-		}
 	}
 
-	private void validarNumero(String numero) {
+	public void validarNumero(String numero) {
 
 		try {
 			Integer.parseInt(numero);
@@ -42,19 +19,27 @@ public class ValidadorDeParametros {
 		}
 	}
 
-	private void validarParametroFormat(String format){
-		if (!format.startsWith("--format=")) {
-			throw new IllegalArgumentException("La entrada del parametro format es invalida. Deberia ser --format=");			
-		}
-
-		String formato = obtenerFormato(format).toLowerCase();
+	public void validarParametroFormat(String format){
+		String formato = format.toLowerCase();
 
 		if (!formato.equals("quiet") && !formato.equals("pretty")) {
 			throw new IllegalArgumentException("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
 		}
 	}
 
-	private String obtenerFormato(String format) {
-		return format.substring(9, format.length());
-	}	
+	public void validarParametroSort(String sort){
+		String formato = sort.toLowerCase();
+
+		if (!formato.equals("asc") && !formato.equals("des")) {
+			throw new IllegalArgumentException("Formato no aceptado. Las opciones posibles son: asc o des.");
+		}
+	}
+
+	public void validarParametroOutputFile(String outputFile){
+		String formato = outputFile.toLowerCase();
+
+		if (!formato.endsWith(".txt")) {
+			throw new IllegalArgumentException("Formato no aceptado. El archivo especificado deberia ser .txt");
+		}
+	}
 }
