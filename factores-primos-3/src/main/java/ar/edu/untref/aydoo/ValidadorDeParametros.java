@@ -19,7 +19,7 @@ public class ValidadorDeParametros {
 		}
 	}
 
-	public void validarParametroFormat(String format){
+	public void validarParametroFormat(String format) {
 		String formato = format.toLowerCase();
 
 		if (!formato.equals("quiet") && !formato.equals("pretty")) {
@@ -27,7 +27,7 @@ public class ValidadorDeParametros {
 		}
 	}
 
-	public void validarParametroSort(String sort){
+	public void validarParametroSort(String sort) {
 		String formato = sort.toLowerCase();
 
 		if (!formato.equals("asc") && !formato.equals("des")) {
@@ -35,7 +35,7 @@ public class ValidadorDeParametros {
 		}
 	}
 
-	public void validarParametroOutputFile(String outputFile){
+	public void validarParametroOutputFile(String outputFile) {
 		String formato = outputFile.toLowerCase();
 
 		if (!formato.endsWith(".txt")) {

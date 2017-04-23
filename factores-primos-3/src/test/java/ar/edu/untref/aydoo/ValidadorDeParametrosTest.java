@@ -62,13 +62,32 @@ public class ValidadorDeParametrosTest {
 	}
 	
 	@Test
-	public void ValidarFormatoNoCaseSensitiveCorrecto(){
+	public void ValidarFormatoPrettyNoCaseSensitiveCorrecto(){
 		validador.validarParametroFormat("pREtTy");		
+	}
+	
+	@Test
+	public void ValidarFormatoQuietNoCaseSensitiveCorrecto(){
+		validador.validarParametroFormat("quiet");		
 	}
 	
 	@Test
 	public void ValidarParametroAscCorrecto(){
 		validador.validarParametroSort("asc");		
+	}
+	
+	@Test
+	public void ValidarParametroDesCorrecto(){
+		validador.validarParametroSort("des");		
+	}
+	
+	@Test
+	public void ValidarParametroNoVacioConArrayConValoresCorrecto(){
+		String[] array = new String[2];
+		array[0] = "asd";
+		array[1] = "oqwi";
+			
+		validador.validarParametrosNoVacio(array);		
 	}
 	
 	@Test
