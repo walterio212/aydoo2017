@@ -56,9 +56,5 @@ public class ValidadorDeParametros {
 
 	private String obtenerFormato(String format) {
 		return format.substring(9, format.length());
-	}
-	
-	private String obtenerNombreArchivo(String outputFileName) {
-		return outputFileName.substring(15, outputFileName.length());
-	}
+	}	
 }

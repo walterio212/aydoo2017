@@ -20,13 +20,13 @@ public class Programa
 
     		System.out
     		.print("Factores Primos de " + numeroIngresado + ": ");
-    		
+
     		String texto = constructorTxt.construir(factoresPrimos, parametros[1], "asc");
 
     		System.out.print(texto);
-    		
-    		//creador.crearArchivo(texto, "salida.txt");
-    		
+
+    		creador.crearArchivo(texto, "salida.txt");
+
     	}
     	catch (IllegalArgumentException e) {
     		System.err.println(e.getMessage());
