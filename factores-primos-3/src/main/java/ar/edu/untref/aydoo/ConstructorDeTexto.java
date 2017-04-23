@@ -7,9 +7,10 @@ public class ConstructorDeTexto {
 		ordenarArray(array, sort);
 
 		if (format.toLowerCase().equals("quiet")) {
+			String newLine = "\n";
+			texto += newLine;
 
-			String newLine = "\n"; //System.getProperty("line.separator");
-			System.out.print(newLine);
+			 //System.getProperty("line.separator");
 			for (int i = 0; i < array.length; i++) {
 	        	texto += array[i] + newLine;
 	    	}
