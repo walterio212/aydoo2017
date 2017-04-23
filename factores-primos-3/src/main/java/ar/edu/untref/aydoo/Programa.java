@@ -26,7 +26,7 @@ public class Programa
 
     		System.out.print(texto);
     		if (!parametros.get("Format").equals("")) {
-    			creador.crearArchivo(texto, parametros.get("Format"));    			
+    			creador.crearArchivo(texto, parametros.get("OutputFile"));
     		}
 
     	}
