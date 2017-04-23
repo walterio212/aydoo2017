@@ -12,7 +12,7 @@ public class ValidadorDeParametros {
 		resultado[1] = "";
 
 		if (args.length >= 2) {
-			String formato = ObtenerFormato(args[1]);
+			String formato = obtenerFormato(args[1]);
 			resultado[1] = formato.toLowerCase();
 		}
 
@@ -27,7 +27,7 @@ public class ValidadorDeParametros {
 
 		validarNumero(args[0]);
 
-		if (args.length >= 2){ 
+		if (args.length >= 2) { 
 			validarParametroFormat(args[1]);
 		}
 	}
@@ -41,21 +41,24 @@ public class ValidadorDeParametros {
 			throw new IllegalArgumentException("El primer parametro enviado no es un número natural");
 		}
 	}
-	
+
 	private void validarParametroFormat(String format){
-		//--format=quiet; --format=pretty;
 		if (!format.startsWith("--format=")) {
 			throw new IllegalArgumentException("La entrada del parametro format es invalida. Deberia ser --format=");			
 		}
 
-		String formato = ObtenerFormato(format).toLowerCase();
+		String formato = obtenerFormato(format).toLowerCase();
 
 		if (!formato.equals("quiet") && !formato.equals("pretty")) {
 			throw new IllegalArgumentException("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
 		}
 	}
 
-	private String ObtenerFormato(String format) {
+	private String obtenerFormato(String format) {
 		return format.substring(9, format.length());
+	}
+	
+	private String obtenerNombreArchivo(String outputFileName) {
+		return outputFileName.substring(15, outputFileName.length());
 	}
 }

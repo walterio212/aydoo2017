@@ -8,7 +8,7 @@ public class ConstructorDeTexto {
 
 		if (format.toLowerCase().equals("quiet")) {
 
-			String newLine = System.getProperty("line.separator");
+			String newLine = "\n"; //System.getProperty("line.separator");
 			System.out.print(newLine);
 			for (int i = 0; i < array.length; i++) {
 	        	texto += array[i] + newLine;
