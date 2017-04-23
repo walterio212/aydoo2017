@@ -19,7 +19,7 @@ public class Programa
     		System.out
     		.print("Factores Primos de " + numeroIngresado + ": ");
 
-    		impresora.imprimir(factoresPrimos, parametros[1]);
+    		impresora.imprimir(factoresPrimos, parametros[1], "asc");
     	}
     	catch (IllegalArgumentException e) {
     		System.err.println(e.getMessage());

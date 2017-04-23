@@ -32,7 +32,7 @@ public class ImpresoraTest {
 		array[0] = 3;
 		array[1] = 5;
 		
-		impresora.imprimir(array, "quiet");
+		impresora.imprimir(array, "quiet", "asc");
 		String salidaConsola = consola.toString();
 		
 		Assert.assertEquals("\n3\n5\n", salidaConsola);
@@ -45,7 +45,7 @@ public class ImpresoraTest {
 		array[0] = 3;
 		array[1] = 5;
 		
-		impresora.imprimir(array, "pretty");
+		impresora.imprimir(array, "pretty", "asc");
 		String salidaConsola = consola.toString();
 		
 		Assert.assertEquals("3 5 ", salidaConsola);
@@ -58,7 +58,7 @@ public class ImpresoraTest {
 		array[0] = 3;
 		array[1] = 5;
 		
-		impresora.imprimir(array, "");
+		impresora.imprimir(array, "", "");
 		String salidaConsola = consola.toString();
 		
 		Assert.assertEquals("3 5 ", salidaConsola);
